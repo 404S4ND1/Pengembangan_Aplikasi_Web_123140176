@@ -21,17 +21,23 @@ Aplikasi ini membantu mahasiswa mengelola tugas akademik dengan fitur interaktif
 Berikut adalah screenshot minimal 3 yang menunjukkan fitur utama (catatan: screenshot ini bersifat deskriptif; gantilah dengan yang sebenarnya saat Anda menjalankan aplikasi).
 
 1. **Halaman Utama dengan Form Tambah Tugas**  
-   [Gambar 1: Tampilan form untuk menambahkan tugas dan daftar tugas kosong]  
+  ![Tampilan 1](RIYAN%20SANDI%20PRAYOGA_123140176_P1/1.png)
    *Deskripsi: Menunjukkan form input dan tombol submit.*
 
 2. **Daftar Tugas dengan Filter**  
-   [Gambar 2: Daftar tugas setelah menambahkan beberapa item, dengan opsi filter]  
+  ![Tampilan 2](RIYAN%20SANDI%20PRAYOGA_123140176_P1/2.png)
    *Deskripsi: Menampilkan tugas yang difilter berdasarkan status "Belum Selesai".*
 
 3. **Tugas yang Telah Diselesaikan**  
-   [Gambar 3: Tugas dengan status selesai (garis miring) dan hitungan tugas pending]  
+   ![Tampilan 3](RIYAN%20SANDI%20PRAYOGA_123140176_P1/3.png)  
    *Deskripsi: Menunjukkan fungsi mark as done dan statistik tugas.*
 
 ## Penjelasan Teknis
 - **Penggunaan LocalStorage**: Aplikasi menggunakan `localStorage.setItem('tasks', JSON.stringify(tasks))` untuk menyimpan array tugas setiap kali ada perubahan (misalnya, tambah, edit, hapus). Data dimuat dengan `JSON.parse(localStorage.getItem('tasks'))` saat halaman dibuka, memastikan data persisten. Ini menangani penyimpanan lokal dengan aman dan efisien.
 - **Validasi Form**: Implementasi validasi dilakukan di JavaScript saat form disubmit. Misalnya, memeriksa jika `taskName` tidak kosong menggunakan `trim()` dan `if (!taskName)`, serta memvalidasi `deadline` dengan `isNaN(new Date(deadline).getTime())` untuk memastikan format tanggal benar. Pesan error ditampilkan di elemen `<div id="formError">` untuk feedback pengguna.
+
+
+## 👨‍💻 Author
+**RIYAN SANDI PRYAOGA**  
+NIM: 123140176  
+Mata Kuliah: Pengembangan Aplikasi Web

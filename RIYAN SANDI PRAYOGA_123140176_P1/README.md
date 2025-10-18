@@ -21,15 +21,15 @@ Aplikasi ini membantu mahasiswa mengelola tugas akademik dengan fitur interaktif
 Berikut adalah screenshot minimal 3 yang menunjukkan fitur utama (catatan: screenshot ini bersifat deskriptif; gantilah dengan yang sebenarnya saat Anda menjalankan aplikasi).
 
 1. **Halaman Utama dengan Form Tambah Tugas**  
- ![Tampilan 1](RIYAN%20SANDI%20PRAYOGA_123140176_P1/1.png)
+   ![Tampilan 1](1.png)
    *Deskripsi: Menunjukkan form input dan tombol submit.*
 
 2. **Daftar Tugas dengan Filter**  
-  ![Tampilan 2](RIYAN%20SANDI%20PRAYOGA_123140176_P1/2.png)
+  ![Tampilan 2](2.png)
    *Deskripsi: Menampilkan tugas yang difilter berdasarkan status "Belum Selesai".*
 
 3. **Tugas yang Telah Diselesaikan**  
-   ![Tampilan 3](RIYAN%20SANDI%20PRAYOGA_123140176_P1/3.png)  
+  ![Tampilan 3](3.png)  
    *Deskripsi: Menunjukkan fungsi mark as done dan statistik tugas.*
 
 ## Penjelasan Teknis

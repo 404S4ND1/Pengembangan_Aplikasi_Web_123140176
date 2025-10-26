@@ -35,6 +35,12 @@ Aplikasi ini mengimplementasikan berbagai fitur modern **JavaScript (ES6+)** sep
 | **Async / Await** | Diterapkan pada fungsi `updateClock` untuk memperbarui jam secara asinkron |
 | **Classes** | Class `DashboardManager` digunakan untuk mengelola data dari setiap bagian dashboard (jadwal dan tugas) |
 
----
 
+1. **Halaman Utama**  
+ ![Tampilan 1](1.png)
+   *Deskripsi: Menunjukkan Aplikasi yang sudah Jadi.*
 
+## 👨‍💻 Author
+**RIYAN SANDI PRYAOGA**  
+NIM: 123140176  
+Mata Kuliah: Pengembangan Aplikasi Web

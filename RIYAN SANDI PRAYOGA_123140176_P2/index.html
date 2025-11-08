@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard Sandi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Personal Dashboard Sandi</h1>
+    <p id="clock"></p>
+
+    <section class="section">
+      <h2>📚 Jadwal Kuliah</h2>
+      <div id="schedule-list"></div>
+      <input type="text" id="schedule-input" placeholder="Tambahkan jadwal..." />
+      <button id="add-schedule">Tambah</button>
+    </section>
+
+    <section class="section">
+      <h2>📝 Daftar Tugas</h2>
+      <div id="task-list"></div>
+      <input type="text" id="task-input" placeholder="Tambahkan tugas..." />
+      <button id="add-task">Tambah</button>
+    </section>
+
+    <section class="section">
+      <h2>📔 Catatan Pribadi</h2>
+      <textarea id="notes" placeholder="Tulis catatan kamu di sini..."></textarea>
+      <button id="save-notes">Simpan Catatan</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

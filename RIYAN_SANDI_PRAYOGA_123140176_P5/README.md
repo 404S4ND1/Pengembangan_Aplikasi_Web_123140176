@@ -186,7 +186,8 @@ Reservasi: Fitur untuk mereservasi item yang sedang dipinjam
 Project ini dibuat untuk keperluan pembelajaran dan tugas praktikum.
 
 👤 Author
-Nama Anda
+RIYAN SANDI PRAYOGA
+123140176
 
 Tugas Praktikum OOP Python
 Sistem Manajemen Perpustakaan

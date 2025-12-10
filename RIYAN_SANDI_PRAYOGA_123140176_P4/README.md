@@ -1,4 +1,4 @@
-Program Pengelolaan Data Nilai Mahasiswa
+Program Pengelolaan Data Data Nilai Mahasiswa
 
 Program ini dibuat untuk mengelola data nilai mahasiswa dengan berbagai fitur lengkap seperti perhitungan nilai akhir, penentuan grade, pencarian nilai tertinggi/terendah, filter berdasarkan grade, dan lain-lain.
 

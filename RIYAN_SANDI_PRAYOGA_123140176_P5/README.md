@@ -1,195 +1,304 @@
-📚 Sistem Manajemen Perpustakaan Sederhana
-Sistem manajemen perpustakaan berbasis OOP (Object-Oriented Programming) yang diimplementasikan menggunakan Python. Sistem ini mendemonstrasikan konsep-konsep OOP seperti Abstract Class, Inheritance, Encapsulation, dan Polymorphism.
+# Sistem Manajemen Perpustakaan Sederhana
 
-🎯 Fitur-Fitur
-1. Manajemen Item Perpustakaan
-Menambahkan Item: Menambahkan buku dan majalah ke koleksi perpustakaan
-Menampilkan Daftar: Melihat semua item yang tersedia dengan status (tersedia/dipinjam)
-Pencarian: Mencari item berdasarkan judul atau ID
-Peminjaman: Meminjam item dari perpustakaan
-Pengembalian: Mengembalikan item yang telah dipinjam
-2. Tipe Item yang Didukung
-Buku (Book): Dengan informasi ISBN, jumlah halaman, dan genre
-Majalah (Magazine): Dengan informasi nomor edisi dan bulan publikasi
-🏗️ Struktur Kode dan Konsep OOP
-1. Abstract Class (LibraryItem)
-python
+Dokumentasi dan kode contoh untuk **Sistem Manajemen Perpustakaan** berbasis OOP (Python).
+
+---
+
+## Ringkasan
+
+Sistem ini mendemonstrasikan konsep-konsep OOP:
+
+* **Abstraction**: `LibraryItem` sebagai abstract base class.
+* **Inheritance**: `Book` dan `Magazine` mewarisi `LibraryItem`.
+* **Encapsulation**: atribut private (`__...`) dan property getter/setter.
+* **Polymorphism**: method `display_info()` berbeda implementasinya.
+* **Composition**: `Library` mengandung daftar `LibraryItem`.
+
+Dibangun untuk Python 3.7+ dan tidak memerlukan library eksternal.
+
+---
+
+## Struktur Project
+
+```
+library-management-system/
+├─ library_system.py    # file utama berisi semua class dan demo
+└─ README.md            # dokumentasi (file ini)
+```
+
+---
+
+## Kode: `library_system.py`
+
+Salin seluruh blok ini ke file `library_system.py` dan jalankan `python library_system.py`.
+
+```python
+from abc import ABC, abstractmethod
+from typing import List, Optional
+
 class LibraryItem(ABC):
-    # Base class untuk semua item perpustakaan
-    # Menerapkan abstraction dengan abstract methods
-Kelas dasar abstrak yang menjadi blueprint untuk semua item perpustakaan
-Memiliki abstract methods: display_info() dan get_item_type()
-Menerapkan encapsulation dengan private attributes (__item_id, __title)
-2. Inheritance (Pewarisan)
-python
-class Book(LibraryItem):      # Mewarisi dari LibraryItem
-class Magazine(LibraryItem):  # Mewarisi dari LibraryItem
-Book dan Magazine mewarisi properties dan methods dari LibraryItem
-Setiap subclass mengimplementasikan abstract methods sesuai karakteristiknya
-3. Encapsulation
-Private Attributes (__attribute): Tidak dapat diakses langsung dari luar class
-__item_id, __title, __isbn, dll.
-Protected Attributes (_attribute): Dapat diakses oleh subclass
-_is_available
-Property Decorators: Mengontrol akses ke private attributes
-python
-  @property
-  def title(self):
-      return self.__title
-  
-  @title.setter
-  def title(self, value):
-      # Validasi sebelum set value
-4. Polymorphism
-Method display_info() diimplementasikan berbeda di setiap subclass
-Method yang sama menghasilkan output berbeda sesuai tipe object
-python
-# Polymorphism in action
-for item in items:
-    print(item.display_info())  # Output berbeda untuk Book dan Magazine
-5. Composition
-Class Library mengkomposisikan list dari LibraryItem
-Mengelola koleksi objects dari berbagai tipe
-📋 Persyaratan Sistem
-Python 3.7 atau lebih tinggi
-Tidak memerlukan library eksternal (menggunakan standard library)
-🚀 Cara Menjalankan Program
-1. Clone atau Download Repository
-bash
-git clone <repository-url>
-cd library-management-system
-2. Jalankan Program
-bash
-python library_system.py
-3. Output yang Diharapkan
-Program akan menampilkan demonstrasi lengkap dari semua fitur:
+    """Blueprint abstrak untuk item perpustakaan.
 
-Menambahkan item (buku dan majalah)
-Menampilkan semua item
-Mencari item berdasarkan judul dan ID
-Meminjam dan mengembalikan item
-Menampilkan status perpustakaan
-📸 Screenshot Hasil Running Program
-1. Menambahkan Item ke Perpustakaan
-📝 MENAMBAHKAN ITEM KE PERPUSTAKAAN:
-------------------------------------------------------------
-✓ Item 'Pemrograman Python untuk Pemula' berhasil ditambahkan!
-✓ Item 'Data Science dengan Python' berhasil ditambahkan!
-✓ Item 'Seni Menulis Kode Bersih' berhasil ditambahkan!
-✓ Item 'Tech Monthly' berhasil ditambahkan!
-✓ Item 'Science Today' berhasil ditambahkan!
-2. Menampilkan Semua Item
-============================================================
-PERPUSTAKAAN PERPUSTAKAAN KOTA
-============================================================
-Total Item    : 5
-Tersedia      : 5
-Dipinjam      : 0
-============================================================
+    Menyimpan atribut privat untuk menerapkan encapsulation dan
+    mendefinisikan interface yang harus diimplementasikan subclass.
+    """
 
-============================================================
-Tipe Item    : Buku
-ID           : B001
-Judul        : Pemrograman Python untuk Pemula
-Penulis      : John Doe
-Tahun        : 2023
-ISBN         : 978-1234567890
-Halaman      : 350
-Genre        : Teknologi
-Status       : ✓ Tersedia
-============================================================
-3. Mencari dan Meminjam Item
-🔍 MENCARI ITEM BERDASARKAN JUDUL 'Python':
-------------------------------------------------------------
-[Menampilkan hasil pencarian...]
+    def __init__(self, item_id: str, title: str, author: str, year: int):
+        self.__item_id = item_id
+        self.__title = title
+        self.__author = author
+        self.__year = year
+        self._is_available = True  # protected attribute
 
-📤 MEMINJAM ITEM:
-------------------------------------------------------------
-✓ Item 'Pemrograman Python untuk Pemula' berhasil dipinjam!
-✓ Item 'Tech Monthly' berhasil dipinjam!
-📊 Diagram Class
-                    ┌─────────────────┐
-                    │  LibraryItem    │
-                    │    (Abstract)   │
-                    ├─────────────────┤
-                    │ - __item_id     │
-                    │ - __title       │
-                    │ - __author      │
-                    │ - __year        │
-                    │ # _is_available │
-                    ├─────────────────┤
-                    │ + display_info()│
-                    │ + get_item_type()│
-                    │ + borrow()      │
-                    │ + return_item() │
-                    └────────┬────────┘
-                             │
-                ┌────────────┴────────────┐
-                │                         │
-        ┌───────▼────────┐       ┌───────▼────────┐
-        │     Book       │       │   Magazine     │
-        ├────────────────┤       ├────────────────┤
-        │ - __isbn       │       │ - __issue_num  │
-        │ - __pages      │       │ - __month      │
-        │ - __genre      │       └────────────────┘
-        └────────────────┘
-        
-                    ┌─────────────────┐
-                    │    Library      │
-                    ├─────────────────┤
-                    │ - __name        │
-                    │ - __items[]     │
-                    ├─────────────────┤
-                    │ + add_item()    │
-                    │ + search()      │
-                    │ + display_all() │
-                    │ + borrow_item() │
-                    │ + return_item() │
-                    └─────────────────┘
-🔍 Penjelasan Konsep OOP yang Diterapkan
-1. Abstract Class (30%)
-LibraryItem adalah abstract base class dengan ABC
-Mendefinisikan abstract methods yang wajib diimplementasikan
-Menyediakan struktur dasar untuk semua item perpustakaan
-2. Encapsulation (25%)
-Private attributes (__attribute) untuk menyembunyikan data internal
-Property decorators untuk kontrol akses yang lebih baik
-Getter dan Setter dengan validasi data
-Contoh: __item_id tidak bisa diakses langsung, hanya melalui property item_id
-3. Polymorphism (20%)
-Method display_info() memiliki implementasi berbeda di Book dan Magazine
-Method get_item_type() mengembalikan tipe yang berbeda
-Satu interface, banyak implementasi
-4. Inheritance (15%)
-Book dan Magazine mewarisi dari LibraryItem
-Reusability kode melalui pewarisan
-Subclass dapat mengakses properties dan methods parent class
-5. Fungsionalitas Program (15%)
-Semua fitur berjalan dengan baik
-Error handling untuk kasus edge cases
-User-friendly output dengan emoji dan formatting
-🎓 Dokumentasi Kode (10%)
-Setiap class memiliki docstring yang menjelaskan fungsinya
-Setiap method memiliki penjelasan parameter dan return value
-Komentar inline untuk kode yang kompleks
-Type hints untuk parameter dan return values
-👨‍💻 Cara Mengembangkan
-Anda dapat mengembangkan sistem ini dengan menambahkan:
+    # Properties untuk encapsulation
+    @property
+    def item_id(self) -> str:
+        return self.__item_id
 
-Item baru: DVD, E-Book, Audiobook (buat class baru yang inherit dari LibraryItem)
-Fitur peminjam: Class Member untuk mengelola data peminjam
-Database: Integrasi dengan SQLite atau database lain
-GUI: Tambahkan interface grafis dengan Tkinter atau PyQt
-Denda: Sistem denda untuk keterlambatan pengembalian
-Reservasi: Fitur untuk mereservasi item yang sedang dipinjam
-📝 Lisensi
+    @property
+    def title(self) -> str:
+        return self.__title
+
+    @title.setter
+    def title(self, value: str) -> None:
+        if not value:
+            raise ValueError("Title tidak boleh kosong")
+        self.__title = value
+
+    @property
+    def author(self) -> str:
+        return self.__author
+
+    @property
+    def year(self) -> int:
+        return self.__year
+
+    @property
+    def is_available(self) -> bool:
+        return self._is_available
+
+    def borrow(self) -> bool:
+        """Coba pinjam item. Mengembalikan True jika berhasil."""
+        if self._is_available:
+            self._is_available = False
+            return True
+        return False
+
+    def return_item(self) -> None:
+        """Kembalikan item ke status tersedia."""
+        self._is_available = True
+
+    @abstractmethod
+    def display_info(self) -> str:
+        """Tampilkan informasi lengkap item (harus diimplementasikan subclass)."""
+
+    @abstractmethod
+    def get_item_type(self) -> str:
+        """Kembalikan tipe item: 'Book' atau 'Magazine' dll."""
+
+
+class Book(LibraryItem):
+    """Representasi buku dengan fields tambahan seperti ISBN, pages, genre."""
+
+    def __init__(self, item_id: str, title: str, author: str, year: int,
+                 isbn: str, pages: int, genre: str):
+        super().__init__(item_id, title, author, year)
+        self.__isbn = isbn
+        self.__pages = pages
+        self.__genre = genre
+
+    @property
+    def isbn(self) -> str:
+        return self.__isbn
+
+    @property
+    def pages(self) -> int:
+        return self.__pages
+
+    @property
+    def genre(self) -> str:
+        return self.__genre
+
+    def display_info(self) -> str:
+        status = "✓ Tersedia" if self.is_available else "✗ Dipinjam"
+        return (f"Tipe Item : Buku\n"
+                f"ID        : {self.item_id}\n"
+                f"Judul     : {self.title}\n"
+                f"Penulis   : {self.author}\n"
+                f"Tahun     : {self.year}\n"
+                f"ISBN      : {self.isbn}\n"
+                f"Halaman   : {self.pages}\n"
+                f"Genre     : {self.genre}\n"
+                f"Status    : {status}\n")
+
+    def get_item_type(self) -> str:
+        return "Book"
+
+
+class Magazine(LibraryItem):
+    """Representasi majalah dengan issue number dan month."""
+
+    def __init__(self, item_id: str, title: str, author: str, year: int,
+                 issue_num: int, month: str):
+        super().__init__(item_id, title, author, year)
+        self.__issue_num = issue_num
+        self.__month = month
+
+    @property
+    def issue_num(self) -> int:
+        return self.__issue_num
+
+    @property
+    def month(self) -> str:
+        return self.__month
+
+    def display_info(self) -> str:
+        status = "✓ Tersedia" if self.is_available else "✗ Dipinjam"
+        return (f"Tipe Item : Majalah\n"
+                f"ID        : {self.item_id}\n"
+                f"Judul     : {self.title}\n"
+                f"Penulis   : {self.author}\n"
+                f"Tahun     : {self.year}\n"
+                f"Edisi     : {self.issue_num}\n"
+                f"Bulan     : {self.month}\n"
+                f"Status    : {status}\n")
+
+    def get_item_type(self) -> str:
+        return "Magazine"
+
+
+class Library:
+    """Kelas untuk mengelola koleksi LibraryItem."""
+
+    def __init__(self, name: str):
+        self.__name = name
+        self.__items: List[LibraryItem] = []
+
+    def add_item(self, item: LibraryItem) -> None:
+        self.__items.append(item)
+        print(f"✓ Item '{item.title}' berhasil ditambahkan!")
+
+    def display_all(self) -> None:
+        total = len(self.__items)
+        available = sum(1 for i in self.__items if i.is_available)
+        borrowed = total - available
+        print("=" * 60)
+        print(self.__name.upper().center(60))
+        print("=" * 60)
+        print(f"Total Item    : {total}")
+        print(f"Tersedia      : {available}")
+        print(f"Dipinjam      : {borrowed}")
+        print("=" * 60)
+        for item in self.__items:
+            print(item.display_info())
+            print("=" * 60)
+
+    def search_by_title(self, keyword: str) -> List[LibraryItem]:
+        keyword_lower = keyword.lower()
+        results = [i for i in self.__items if keyword_lower in i.title.lower()]
+        return results
+
+    def search_by_id(self, item_id: str) -> Optional[LibraryItem]:
+        for i in self.__items:
+            if i.item_id == item_id:
+                return i
+        return None
+
+    def borrow_item(self, item_id: str) -> bool:
+        item = self.search_by_id(item_id)
+        if item is None:
+            print(f"✗ Item dengan ID {item_id} tidak ditemukan.")
+            return False
+        if item.borrow():
+            print(f"✓ Item '{item.title}' berhasil dipinjam!")
+            return True
+        else:
+            print(f"✗ Item '{item.title}' sudah dipinjam.")
+            return False
+
+    def return_item(self, item_id: str) -> bool:
+        item = self.search_by_id(item_id)
+        if item is None:
+            print(f"✗ Item dengan ID {item_id} tidak ditemukan.")
+            return False
+        item.return_item()
+        print(f"✓ Item '{item.title}' berhasil dikembalikan!")
+        return True
+
+
+# Demo penggunaan
+if __name__ == "__main__":
+    lib = Library("Perpustakaan Kota")
+
+    # Menambahkan beberapa item
+    lib.add_item(Book("B001", "Pemrograman Python untuk Pemula", "John Doe", 2023,
+                      "978-1234567890", 350, "Teknologi"))
+    lib.add_item(Book("B002", "Data Science dengan Python", "Jane Smith", 2022,
+                      "978-9876543210", 420, "Data"))
+    lib.add_item(Book("B003", "Seni Menulis Kode Bersih", "Robert C.", 2021,
+                      "978-1112223334", 280, "Pemrograman"))
+    lib.add_item(Magazine("M001", "Tech Monthly", "Editor Team", 2024, 45, "November"))
+    lib.add_item(Magazine("M002", "Science Today", "Science Org", 2024, 12, "Desember"))
+
+    # Menampilkan semua item
+    print()
+    lib.display_all()
+
+    # Mencari berdasarkan judul (keyword)
+    print("\n🔍 MENCARI ITEM BERDASARKAN JUDUL 'Python':")
+    results = lib.search_by_title("Python")
+    if results:
+        for r in results:
+            print(r.display_info())
+    else:
+        print("Tidak ada hasil pencarian.")
+
+    # Meminjam item
+    print("\n📤 MEMINJAM ITEM:")
+    lib.borrow_item("B001")
+    lib.borrow_item("M001")
+
+    # Status setelah peminjaman
+    print()
+    lib.display_all()
+
+    # Mengembalikan item
+    print("\n📥 MENGEMBALIKAN ITEM:")
+    lib.return_item("B001")
+    lib.return_item("M001")
+
+    # Status akhir
+    print()
+    lib.display_all()
+```
+
+---
+
+## Penjelasan Singkat
+
+* `LibraryItem` mendefinisikan interface: `display_info()` dan `get_item_type()` harus diimplementasikan.
+* `Book` dan `Magazine` menambahkan atribut khusus masing-masing.
+* `Library` menyediakan operasi: `add_item`, `display_all`, `search_by_title`, `search_by_id`, `borrow_item`, `return_item`.
+
+---
+
+## Pengembangan Lebih Lanjut (Ide)
+
+* Tambah class `Member` untuk melacak peminjam.
+* Simpan data ke SQLite untuk persistensi.
+* Tambah fitur denda dan durasi pinjam.
+* GUI menggunakan Tkinter atau PyQt.
+
+---
+
+## Lisensi
+
 Project ini dibuat untuk keperluan pembelajaran dan tugas praktikum.
 
-👤 Author
-RIYAN SANDI PRAYOGA
-123140176
+---
 
-Tugas Praktikum OOP Python
-Sistem Manajemen Perpustakaan
-⭐ Jika project ini membantu, jangan lupa beri star pada repository!
+## Author
 
+**RIYAN SANDI PRAYOGA** — 123140176
+
+*Tugas Praktikum OOP Python — Sistem Manajemen Perpustakaan*

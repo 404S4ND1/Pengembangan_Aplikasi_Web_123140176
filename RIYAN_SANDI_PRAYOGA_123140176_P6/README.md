@@ -63,11 +63,6 @@ Template Engine: Jinja2 / Chameleon (sesuai konfigurasi)
 
 WSGI Server: Waitress (Default Pyramid)
 
-📸 Screenshots
-(Tampilan hasil run aplikasi)
-
-[Tambahkan screenshot jika diperlukan]
-
 Copyright © 2025 Riyan Sandi Prayoga.
 
 
